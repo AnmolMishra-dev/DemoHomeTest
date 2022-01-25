@@ -36,7 +36,7 @@ class FormController {
   }
 
 
-  String URLget = "https://script.google.com/macros/s/AKfycbxvf0clxf6Aa854I4j9ewY66VhQ4ocnLQf9Pg4rVsU7GHaAZKwSJe2qcrHdGO1ncqd5MQ/exec";
+  String URLget = "https://script.google.com/macros/s/AKfycbwIAjCA-sboD8seSM3KtiV7m1bv-Ixhl-7JqzGvocr3lypNdgqKoCY-FFddPcz-HfMGLA/exec";
 
   Future<List<FeedbackForm>> getFeedbackList() async {
     return await http.get(Uri.parse(URLget)).then((response) {
