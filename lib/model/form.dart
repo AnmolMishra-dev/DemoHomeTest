@@ -6,20 +6,18 @@ class FeedbackForm {
   String feedback;
   String currentDate;
 
-  FeedbackForm(this.name, this.email, this.mobileNo, this.feedback ,this.currentDate);
+  FeedbackForm(this.name, this.email, this.feedback, this.mobileNo, this.currentDate);
 
   factory FeedbackForm.fromJson(dynamic json) {
-    return FeedbackForm("${json['name']}", "${json['email']}",
-        "${json['currentDate']}",
-        "${json['mobileNo']}", "${json['feedback']}");
+    return FeedbackForm("${json['name']}", "${json['email']}","${json['feedback']}","${json['mobile_no']}","${json['currentDate']}");
   }
 
   // Method to make GET parameters.
   Map toJson() => {
-    'currentDate':currentDate,
     'name': name,
     'email': email,
+    'feedback': feedback,
     'mobileNo': mobileNo,
-    'feedback': feedback
+    'currentDate':currentDate,
   };
 }
