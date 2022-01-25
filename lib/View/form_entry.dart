@@ -26,7 +26,7 @@ class _MyHomePageState extends State<MyHomePage> {
   // not a GlobalKey<MyCustomFormState>.
   final _formKey = GlobalKey<FormState>();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-
+  DateTime currentDate = DateTime.now();
   // TextField Controllers
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
@@ -43,7 +43,9 @@ class _MyHomePageState extends State<MyHomePage> {
           nameController.text,
           emailController.text,
           mobileNoController.text,
-          feedbackController.text);
+          feedbackController.text,
+          currentDate.toString()
+      );
 
       FormController formController = FormController();
 
@@ -67,6 +69,18 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime pickedDate = await showDatePicker(
+        context: context,
+        initialDate: currentDate,
+        firstDate: DateTime(2015),
+        lastDate: DateTime(2050));
+    if (pickedDate != null && pickedDate != currentDate)
+      setState(() {
+        print(pickedDate);
+        currentDate = pickedDate;
+      });
+  }
   // Method to show snackbar with 'message'.
   _showSnackbar(String message) {
     final snackBar = SnackBar(content: Text(message));
@@ -143,10 +157,17 @@ class _MyHomePageState extends State<MyHomePage> {
                             labelText: 'Feedback'
                         ),
                       ),
+                      RaisedButton(
+                        onPressed: () => _selectDate(context),
+                        child: Text('Select date'),
+                      ),
                     ],
                   ),
                 )
             ),
+
+
+
             RaisedButton(
               color: Colors.blue,
               textColor: Colors.white,
