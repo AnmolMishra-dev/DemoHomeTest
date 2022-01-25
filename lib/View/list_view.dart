@@ -54,6 +54,7 @@ class _FeedbackListPageState extends State<FeedbackListPage> {
       body: ListView.builder(
         itemCount: feedbackItems.length,
         itemBuilder: (context, index) {
+          print(feedbackItems[index]);
           return ListTile(
             title: Row(
               children: <Widget>[
@@ -68,7 +69,7 @@ class _FeedbackListPageState extends State<FeedbackListPage> {
               children: <Widget>[
                 Icon(Icons.message),
                 Expanded(
-                  child: Text(feedbackItems[index].feedback),
+                  child: Text('${feedbackItems[index].feedback} ${feedbackItems[index].currentDate}'  ),
                 )
               ],
             ),
